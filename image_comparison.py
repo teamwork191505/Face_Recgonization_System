@@ -1,9 +1,8 @@
 import cv2
 import face_recognition
-import numpy as np
 from numpy import ndarray
 
-img = cv2.imread("Images/RDJ new.jpg")
+img = cv2.imread('Images/RDJ new.jpg')
 rgb_img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 img_encoding: ndarray = face_recognition.face_encodings(rgb_img)[0]
 

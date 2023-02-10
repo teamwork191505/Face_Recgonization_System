@@ -23,7 +23,7 @@ ws.attributes('-fullscreen',True)
 
 def home():
     ws.destroy()
-    import realproject 
+    import mainHomePageFile
 
 def createAccount():
     ws.destroy()

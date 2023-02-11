@@ -171,7 +171,7 @@ class Criminal:
             self.add_txt.delete('1.0', END)
             self.add_txt.insert(END, row[8])
 
-        def update_data():
+        # def update_data():
         #     if self.roll_no.get() == "" or self.name.get() == "" or self.father_name.get() == "" or self.contact.get() == "" or self.add_txt.get(
         #             '1.0', END) == "" or len(self.contact.get()) != 10:
         #

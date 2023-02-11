@@ -16,16 +16,16 @@ if result == [True]:
     from plyer import notification
     import time
 
-    # while True:
-    #     time.sleep(2)
-    #     notification.notify(
-    #         title='Alert From Police HQ',
-    #         message='Suspected person found in your area'
-    #                 '\nshowed image of suspected person',
-    #         app_icon="Notif.ico",
-    #         timeout=8,
-    #     )
-    #     cv2.imshow("Img", img)
+    while True:
+        time.sleep(2)
+        notification.notify(
+            title='Alert From Police HQ',
+            message='Suspected person found in your area'
+                    '\nshowed image of suspected person',
+            app_icon="Notif.ico",
+            timeout=8,
+        )
+    # #    cv2.imshow("Img", img)
     #     cv2.imshow("Img 2", img2)
 
 else:

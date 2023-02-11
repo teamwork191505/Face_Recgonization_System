@@ -187,7 +187,7 @@ class Criminal:
         #         fetch_data()
         #         clear_data()
         #         messagebox.showinfo('Success', 'Record has been updated')
-        #
+
         def delete_data():
             con = pymysql.connect(host='localhost', user='root', password='', database='idcriminals')
             cur = con.cursor()

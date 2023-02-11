@@ -1,2 +1,0 @@
-('Baku mangal singh', 'Male', 'Murderer, thief', 'Panchmahal', 'Wardol station', '23 august 2002')
-('', '', '', '', '', '')

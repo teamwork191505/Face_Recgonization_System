@@ -256,40 +256,42 @@ class Criminal:
         # # ************Frame-3 Treeview***************
         #
         view_frame = Frame(data_frame, bd=5, relief='ridge', bg='wheat')
-        view_frame.place(x=20, y=100, width=1080, height=620)
+        view_frame.place(x=0, y=100, width=1080, height=620)
 
         x_scroll = Scrollbar(view_frame, orient=HORIZONTAL)
         y_scroll = Scrollbar(view_frame, orient=VERTICAL)
         table = ttk.Treeview(view_frame, columns=(
-        'Roll_no.', 'Name', 'Father_Name', 'Gender', 'Category', 'Branch', 'Year', 'Contact_no.', 'Address'),
+        'Id', 'Name', 'Gender', 'bdate', 'height', 'weight', 'crimePlace', 'Crime','photo', 'Address'),
                              xscrollcommand=x_scroll.set, yscrollcommand=y_scroll.set)
         x_scroll.pack(side=BOTTOM, fill=X)
         y_scroll.pack(side=RIGHT, fill=Y)
         x_scroll.configure(command=table.xview)
         y_scroll.configure(command=table.yview)
 
-        table.heading("Id_no", text="Id")
+        table.heading("Id", text="Id")
         table.heading("Name", text="Name")
-        table.heading("gender", text="Gender")
         table.heading("Gender", text="Gender")
-        table.heading("Category", text="Category")
-        table.heading("Branch", text="Branch")
-        table.heading("Year", text="Year")
-        table.heading("Contact_no.", text="Contact_no.")
+        table.heading("bdate", text="bdate")
+        table.heading("height", text="height")
+        table.heading("weight", text="weight")
+        table.heading("crimePlace", text="crimePlace")
+        table.heading("Crime", text="Crime")
+        table.heading("photo", text="photo")
         table.heading("Address", text="Address")
 
-        table.column("Roll_no.", width=100)
+        table.column("Id", width=100)
         table.column("Name", width=100)
-        table.column("Father_Name", width=100)
         table.column("Gender", width=100)
-        table.column("Category", width=100)
-        table.column("Branch", width=100)
-        table.column("Year", width=100)
-        table.column("Contact_no.", width=100)
+        table.column("bdate", width=100)
+        table.column("height", width=100)
+        table.column("weight", width=100)
+        table.column("crimePlace", width=100)
+        table.column("Crime", width=100)
+        table.column("photo", width=100)
         table.column("Address", width=100)
         table['show'] = 'headings'
         table.bind('<ButtonRelease-1>', focus)
-        # fetch_data()
+        # # fetch_data()
         table.pack(fill=BOTH, expand=1)
 
 

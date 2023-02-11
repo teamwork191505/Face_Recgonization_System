@@ -174,7 +174,7 @@ class Criminal:
         # def update_data():
         #     if self.roll_no.get() == "" or self.name.get() == "" or self.father_name.get() == "" or self.contact.get() == "" or self.add_txt.get(
         #             '1.0', END) == "" or len(self.contact.get()) != 10:
-        #         messagebox.showerror('Error', 'Required all fields and correct fields')
+        #
         #     else:
         #         con = pymysql.connect(host='localhost', user='root', password='', database='student_management_system')
         #         cur = con.cursor()

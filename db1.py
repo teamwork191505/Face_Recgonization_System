@@ -5,6 +5,14 @@ from tkinter import messagebox
 import pymysql
 
 
+def fetch_data():
+    pass
+
+
+def clear_data():
+    pass
+
+
 class Criminal:
     def __init__(self, root, focus=None):
         self.root = root
@@ -102,26 +110,26 @@ class Criminal:
         # self.grid(row=12, column=1, pady=37)
         # # ***************Functions*********************
         #
-        # def add_data():
-        #     if self.roll_no.get() == "" or self.name.get() == "" or self.father_name.get() == "" or self.contact.get() == "" or self.add_txt.get(
-        #             '1.0', END) == "" or len(self.contact.get()) != 10:
-        #         messagebox.showerror('Error', 'Required all fields and correct field')
-        #     else:
-        #         con = pymysql.connect(host='localhost', user='root', password='', database='student_management_system')
-        #         cur = con.cursor()
-        #         cur.execute('insert into students values(%s,%s,%s,%s,%s,%s,%s,%s,%s)', (
-        #         self.roll_no.get(), self.name.get(), self.father_name.get(), self.gen.get(), self.category.get(),
-        #         self.branch.get(), self.year.get(), self.contact.get(), self.add_txt.get('1.0', END)))
-        #         con.commit()
-        #         con.close()
-        #         fetch_data()
-        #         clear_data()
-        #         messagebox.showinfo('Success', 'Record has been submitted')
-        #
+        def add_data():
+            if self.Id_no.get() == "" or self.name.get() == "" or self.gender.get() == "" or self.height.get() == "" or self.add_txt.get(
+                    '1.0', END) == "" or len(self.weight.get()) != 10:
+                messagebox.showerror('Error', 'Required all fields and correct field')
+            else:
+                con = pymysql.connect(host='localhost', user='root', password='', database='idcriminals')
+                cur = con.cursor()
+                cur.execute('insert into students values(%s,%s,%s,%s,%s,%s,%s,%s,%s)', (
+                self.Id_no.get(), self.name.get(), self.birth_date.get(), self.gender.get(), self.height.get(),
+                self.weight.get(), self.crime_place.get(), self.crime.get(),self.image.get(), self.add_txt.get('1.0', END)))
+                con.commit()
+                con.close()
+                fetch_data()
+                clear_data()
+                messagebox.showinfo('Success', 'Record has been submitted')
+
         # def fetch_data():
-        #     con = pymysql.connect(host='localhost', user='root', password='', database='student_management_system')
+        #     con = pymysql.connect(host='localhost', user='root', password='', database='idcriminals')
         #     cur = con.cursor()
-        #     cur.execute('select * from students')
+        #     cur.execute('select * from idcriminals')
         #     rows = cur.fetchall()
         #
         #     if rows != 0:
@@ -132,34 +140,37 @@ class Criminal:
         #             table.insert('', END, values=row)
         #         con.commit()
         #     con.close()
-        #
-        # def clear_data():
-        #     self.roll_no.set("")
-        #     self.name.set("")
-        #     self.father_name.set("")
-        #     self.gen.set("")
-        #     self.category.set("")
-        #     self.branch.set("")
-        #     self.year.set("")
-        #     self.contact.set("")
-        #
-        #     self.add_txt.delete('1.0', END)
-        #
-        # def focus(e):
-        #     cursor = table.focus()
-        #     content = table.item(cursor)
-        #     row = content['values']
-        #     self.roll_no.set(row[0])
-        #     self.name.set(row[1])
-        #     self.father_name.set(row[2])
-        #     self.gen.set(row[3])
-        #     self.category.set(row[4])
-        #     self.branch.set(row[5])
-        #     self.year.set(row[6])
-        #     self.contact.set(row[7])
-        #     self.add_txt.delete('1.0', END)
-        #     self.add_txt.insert(END, row[8])
-        #
+
+        def clear_data():
+            self.Id_no.set("")
+            self.name.set("")
+            self.birth_date.set("")
+            self.gender.set("")
+            self.height.set("")
+            self.weight.set("")
+            self.crime_place.set("")
+            self.crime.set("")
+            self.image.set("")
+            self.address.set("")
+
+            self.add_txt.delete('1.0', END)
+
+        def focuse(e):
+            cursor = table.focus()
+            content = table.item(cursor)
+            row = content['values']
+            self.Id_no.set(row[0])
+            self.name.set(row[1])
+            self.gender.set(row[2])
+            self.height.set(row[3])
+            self.weight.set(row[4])
+            self.crime_place.set(row[5])
+            self.crime.set(row[6])
+            self.image.set(row[7])
+            self.address.set(row[7])
+            self.add_txt.delete('1.0', END)
+            self.add_txt.insert(END, row[8])
+
         # def update_data():
         #     if self.roll_no.get() == "" or self.name.get() == "" or self.father_name.get() == "" or self.contact.get() == "" or self.add_txt.get(
         #             '1.0', END) == "" or len(self.contact.get()) != 10:
@@ -177,50 +188,50 @@ class Criminal:
         #         clear_data()
         #         messagebox.showinfo('Success', 'Record has been updated')
         #
-        # def delete_data():
-        #     con = pymysql.connect(host='localhost', user='root', password='', database='student_management_system')
-        #     cur = con.cursor()
-        #     cur.execute('delete from students where Roll_no=%s ', self.roll_no.get())
-        #     con.commit()
-        #     con.close()
-        #     fetch_data()
-        #     clear_data()
-        #     messagebox.showinfo('Success', 'Record has been deleted')
+        def delete_data():
+            con = pymysql.connect(host='localhost', user='root', password='', database='idcriminals')
+            cur = con.cursor()
+            cur.execute('delete from students where Roll_no=%s ', self.Id_no.get())
+            con.commit()
+            con.close()
+            fetch_data()
+            clear_data()
+            messagebox.showinfo('Success', 'Record has been deleted')
         #
-        # def search():
-        #     con = pymysql.connect(host='localhost', user='root', password='', database='student_management_system')
-        #     cur = con.cursor()
-        #     cur.execute("select * from students where " + str(self.search_by.get()) + " LIKE '%" + str(
-        #         self.search_txt.get()) + "%'")
-        #     rows = cur.fetchall()
-        #
-        #     if len(rows) != 0:
-        #         table.delete(*table.get_children())
-        #
-        #         for row in rows:
-        #             table.insert('', END, values=row)
-        #
-        #         con.commit()
-        #     else:
-        #         messagebox.showinfo('Not found', 'Record not found')
-        #
-        #     con.close()
-        #
+        def search():
+            con = pymysql.connect(host='localhost', user='root', password='', database='idcriminals')
+            cur = con.cursor()
+            cur.execute("select * from idcriminals where " + str(self.search_by.get()) + " LIKE '%" + str(
+                self.search_txt.get()) + "%'")
+            rows = cur.fetchall()
+
+            if len(rows) != 0:
+                table.delete(*table.get_children())
+
+                for row in rows:
+                    table.insert('', END, values=row)
+
+                con.commit()
+            else:
+                messagebox.showinfo('Not found', 'Record not found')
+
+            con.close()
+
         # # **********Frame-3 Button**************
         #
         btn_frame = Frame(entry_frame, bd=5, relief='ridge', bg='wheat')
         btn_frame.place(x=15, y=590, width=310, height=120)
 
-        add_btn = Button(btn_frame, text='Add', font=("", 12), width="7")
+        add_btn = Button(btn_frame, text='Add', font=("", 12),command='add_data', width="7")
         add_btn.grid(row=0, column=1, padx=50, pady=10)
 
         update_btn = Button(btn_frame, text='Update', font=("", 12),  width="7")
         update_btn.grid(row=0, column=2, padx=10, pady=10)
 
-        delete_btn = Button(btn_frame, text='Delete', font=("", 12),  width="7")
+        delete_btn = Button(btn_frame, text='Delete', font=("", 12),command=delete_data,  width="7")
         delete_btn.grid(row=1, column=1, padx=50, pady=10)
 
-        clear_btn = Button(btn_frame, text='Clear', font=("", 12),  width="7")
+        clear_btn = Button(btn_frame, text='Clear', font=("", 12), command=clear_data ,width="7")
         clear_btn.grid(row=1, column=2, padx=10, pady=10)
 
         # ***********Frame-2***************
@@ -244,7 +255,7 @@ class Criminal:
         show_btn = Button(data_frame, text='Show', font=("", 12))
         show_btn.grid(row=0, column=5, padx=10, pady=10)
 
-        showall_btn = Button(data_frame, text='Show All', font=("", 12))
+        showall_btn = Button(data_frame, text='Show All', font=("", 12),command=fetch_data)
         showall_btn.grid(row=0, column=4, padx=10, pady=10)
 
         total_lbl = Label(data_frame, text="Total Records", font=("", 13))
@@ -290,8 +301,8 @@ class Criminal:
         table.column("photo", width=100)
         table.column("Address", width=100)
         table['show'] = 'headings'
-        table.bind('<ButtonRelease-1>', focus)
-        # # fetch_data()
+        table.bind('<ButtonRelease-1>', focuse)
+        fetch_data()
         table.pack(fill=BOTH, expand=1)
 
 

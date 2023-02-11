@@ -6,7 +6,7 @@ import pymysql
 
 
 class Criminal:
-    def __init__(self, root):
+    def __init__(self, root, focus=None):
         self.root = root
         self.root.title("Criminal Management System")
         self.root.geometry("1350x750+0+0")
@@ -98,6 +98,8 @@ class Criminal:
         self.add_txt = Text(entry_frame, width=20, height=5, font=("", 12))
         self.add_txt.grid(row=10, column=1, sticky='w', padx=10, pady=11)
 
+        # Button(text="ADD", bg="white", borderwidth=5, relief=RIDGE, font=("Roboto 17"))
+        # self.grid(row=12, column=1, pady=37)
         # # ***************Functions*********************
         #
         # def add_data():
@@ -206,87 +208,89 @@ class Criminal:
         #
         # # **********Frame-3 Button**************
         #
-        # btn_frame = Frame(entry_frame, bd=5, relief='ridge', bg='wheat')
-        # btn_frame.place(x=15, y=590, width=310, height=120)
+        btn_frame = Frame(entry_frame, bd=5, relief='ridge', bg='wheat')
+        btn_frame.place(x=15, y=590, width=310, height=120)
+
+        add_btn = Button(btn_frame, text='Add', font=("", 12), width="7")
+        add_btn.grid(row=0, column=1, padx=50, pady=10)
+
+        update_btn = Button(btn_frame, text='Update', font=("", 12),  width="7")
+        update_btn.grid(row=0, column=2, padx=10, pady=10)
+
+        delete_btn = Button(btn_frame, text='Delete', font=("", 12),  width="7")
+        delete_btn.grid(row=1, column=1, padx=50, pady=10)
+
+        clear_btn = Button(btn_frame, text='Clear', font=("", 12),  width="7")
+        clear_btn.grid(row=1, column=2, padx=10, pady=10)
+
+        # ***********Frame-2***************
+        data_frame = Frame(root, bd=5, relief='ridge', bg='wheat')
+        data_frame.place(x=380, y=50, width=1145, height=745)
         #
-        # add_btn = Button(btn_frame, text='Add', font=("", 12), command=add_data, width="7")
-        # add_btn.grid(row=0, column=1, padx=50, pady=10)
-        #
-        # update_btn = Button(btn_frame, text='Update', font=("", 12), command=update_data, width="7")
-        # update_btn.grid(row=0, column=2, padx=10, pady=10)
-        #
-        # delete_btn = Button(btn_frame, text='Delete', font=("", 12), command=delete_data, width="7")
-        # delete_btn.grid(row=1, column=1, padx=50, pady=10)
-        #
-        # clear_btn = Button(btn_frame, text='Clear', font=("", 12), command=clear_data, width="7")
-        # clear_btn.grid(row=1, column=2, padx=10, pady=10)
-        #
-        # # ***********Frame-2***************
-        # data_frame = Frame(root, bd=5, relief='ridge', bg='wheat')
-        # data_frame.place(x=380, y=50, width=1145, height=745)
-        #
-        # # ***********Frame-2 code*****************
-        # search_lbl = Label(data_frame, text="Search by", font=("", 13))
-        # search_lbl.grid(row=0, column=0, sticky='w', padx=10, pady=14)
-        #
-        # search_combo = ttk.Combobox(data_frame, state='readonly', textvariable=self.search_by)
-        # search_combo['values'] = ('Roll_no', 'Contact_no')
-        # search_combo.current(0)
-        # search_combo.grid(row=0, column=1, sticky='w', padx=10, pady=14)
-        #
-        # search_entry = Entry(data_frame, bd=3, relief='ridge', font=("", 12), width=15, textvariable=self.search_txt)
-        # search_entry.grid(row=0, column=2, sticky='w', padx=10, pady=14)
-        #
-        # show_btn = Button(data_frame, text='Show', font=("", 12), command=search)
-        # show_btn.grid(row=0, column=3, padx=10, pady=10)
-        #
-        # showall_btn = Button(data_frame, text='Show All', font=("", 12), command=fetch_data)
-        # showall_btn.grid(row=0, column=4, padx=10, pady=10)
-        #
-        # total_lbl = Label(data_frame, text="Total Records", font=("", 13))
-        # total_lbl.grid(row=1, column=0, sticky='w', padx=10, pady=8)
-        #
-        # totalrecord_lbl = Label(data_frame, text="Total Records", font=("", 13), textvariable=self.totalrecord)
-        # totalrecord_lbl.grid(row=1, column=1, sticky='w', padx=10, pady=8)
-        #
+        # ***********Frame-2 code*****************
+        search_lbl = Label(data_frame, text="Search by", font=("", 13))
+        search_lbl.grid(row=0, column=0, sticky='w', padx=10, pady=14)
+
+        search_combo = ttk.Combobox(data_frame, state='readonly', textvariable=self.search_by)
+        search_combo['values'] = ('Id', 'Name')
+        search_combo.current(0)
+        search_combo.grid(row=0, column=1, sticky='w', padx=10, pady=14)
+
+        search_entry = Entry(data_frame, bd=3, relief='ridge', font=("", 12), width=15, textvariable=self.search_txt)
+        search_entry.grid(row=0, column=2, sticky='w', padx=10, pady=14)
+
+
+
+        show_btn = Button(data_frame, text='Show', font=("", 12))
+        show_btn.grid(row=0, column=5, padx=10, pady=10)
+
+        showall_btn = Button(data_frame, text='Show All', font=("", 12))
+        showall_btn.grid(row=0, column=4, padx=10, pady=10)
+
+        total_lbl = Label(data_frame, text="Total Records", font=("", 13))
+        total_lbl.grid(row=1, column=0, sticky='w', padx=10, pady=8)
+
+        totalrecord_lbl = Label(data_frame, text="Total Records", font=("", 13), textvariable=self.totalrecord)
+        totalrecord_lbl.grid(row=1, column=1, sticky='w', padx=10, pady=8)
+
         # # ************Frame-3 Treeview***************
         #
-        # view_frame = Frame(data_frame, bd=5, relief='ridge', bg='wheat')
-        # view_frame.place(x=20, y=100, width=1080, height=620)
-        #
-        # x_scroll = Scrollbar(view_frame, orient=HORIZONTAL)
-        # y_scroll = Scrollbar(view_frame, orient=VERTICAL)
-        # table = ttk.Treeview(view_frame, columns=(
-        # 'Roll_no.', 'Name', 'Father_Name', 'Gender', 'Category', 'Branch', 'Year', 'Contact_no.', 'Address'),
-        #                      xscrollcommand=x_scroll.set, yscrollcommand=y_scroll.set)
-        # x_scroll.pack(side=BOTTOM, fill=X)
-        # y_scroll.pack(side=RIGHT, fill=Y)
-        # x_scroll.configure(command=table.xview)
-        # y_scroll.configure(command=table.yview)
-        #
-        # table.heading("Roll_no.", text="Roll_no.")
-        # table.heading("Name", text="Name")
-        # table.heading("Father_Name", text="Father_Name")
-        # table.heading("Gender", text="Gender")
-        # table.heading("Category", text="Category")
-        # table.heading("Branch", text="Branch")
-        # table.heading("Year", text="Year")
-        # table.heading("Contact_no.", text="Contact_no.")
-        # table.heading("Address", text="Address")
-        #
-        # table.column("Roll_no.", width=100)
-        # table.column("Name", width=100)
-        # table.column("Father_Name", width=100)
-        # table.column("Gender", width=100)
-        # table.column("Category", width=100)
-        # table.column("Branch", width=100)
-        # table.column("Year", width=100)
-        # table.column("Contact_no.", width=100)
-        # table.column("Address", width=100)
-        # table['show'] = 'headings'
-        # table.bind('<ButtonRelease-1>', focus)
+        view_frame = Frame(data_frame, bd=5, relief='ridge', bg='wheat')
+        view_frame.place(x=20, y=100, width=1080, height=620)
+
+        x_scroll = Scrollbar(view_frame, orient=HORIZONTAL)
+        y_scroll = Scrollbar(view_frame, orient=VERTICAL)
+        table = ttk.Treeview(view_frame, columns=(
+        'Roll_no.', 'Name', 'Father_Name', 'Gender', 'Category', 'Branch', 'Year', 'Contact_no.', 'Address'),
+                             xscrollcommand=x_scroll.set, yscrollcommand=y_scroll.set)
+        x_scroll.pack(side=BOTTOM, fill=X)
+        y_scroll.pack(side=RIGHT, fill=Y)
+        x_scroll.configure(command=table.xview)
+        y_scroll.configure(command=table.yview)
+
+        table.heading("Id_no", text="Id")
+        table.heading("Name", text="Name")
+        table.heading("gender", text="Gender")
+        table.heading("Gender", text="Gender")
+        table.heading("Category", text="Category")
+        table.heading("Branch", text="Branch")
+        table.heading("Year", text="Year")
+        table.heading("Contact_no.", text="Contact_no.")
+        table.heading("Address", text="Address")
+
+        table.column("Roll_no.", width=100)
+        table.column("Name", width=100)
+        table.column("Father_Name", width=100)
+        table.column("Gender", width=100)
+        table.column("Category", width=100)
+        table.column("Branch", width=100)
+        table.column("Year", width=100)
+        table.column("Contact_no.", width=100)
+        table.column("Address", width=100)
+        table['show'] = 'headings'
+        table.bind('<ButtonRelease-1>', focus)
         # fetch_data()
-        # table.pack(fill=BOTH, expand=1)
+        table.pack(fill=BOTH, expand=1)
 
 
 root = Tk()

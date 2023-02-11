@@ -30,10 +30,11 @@ SET time_zone = "+00:00";
 CREATE TABLE `idcriminals` (
   `id` int(10) NOT NULL DEFAULT 21,
   `Name` varchar(25) NOT NULL,
-  `Birth Date` date NOT NULL,
+  `gender` varchar(7) NOT NULL DEFAULT 'male',
+  `Birth_Date` date NOT NULL,
   `height` int(5) NOT NULL,
   `weight` int(3) NOT NULL,
-  `crime place` varchar(30) NOT NULL,
+  `crime_place` varchar(30) NOT NULL,
   `crime` varchar(30) NOT NULL,
   `photo` varchar(30) NOT NULL,
   `Address` text NOT NULL DEFAULT 'write null if not available'

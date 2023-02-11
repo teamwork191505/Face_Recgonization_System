@@ -25,7 +25,7 @@ if result == [True]:
             app_icon="Notif.ico",
             timeout=8,
         )
-    #     cv2.imshow("Img", img)
+    # #    cv2.imshow("Img", img)
     #     cv2.imshow("Img 2", img2)
 
 else:
